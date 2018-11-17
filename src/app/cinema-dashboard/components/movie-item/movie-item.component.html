@@ -1,0 +1,50 @@
+<!--
+  <div class="movie-item col-3" *ngIf="movie">
+    <label>Title: {{ movie.Title }}</label> <label>Year:{{ movie.Year }}</label>
+    <label>Runtime:{{ movie.Runtime }}</label>
+    <label>Genre: {{ movie.Genre }}</label>
+    <label>Director: {{ movie.Director }}</label>
+  </div>
+-->
+<div class="card mb-4" *ngIf="movie">
+  <div class="card-img-wrapper">
+    <img
+      *ngIf="movie.Poster && movie.Title"
+      class="card-img-top"
+      src="{{ movie.Poster }}"
+      alt="{{ movie.Title }}"
+      height="350px"
+    />
+    <ul class="list-inline member-icons animate text-center">
+      <li class="list-inline-item">
+        <ngbd-modal-component [details]="movie"></ngbd-modal-component>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card-body p-1">
+    <!--
+      <h6 class="card-title text-center mb-1"><i class="fa fa-user"></i></h6>
+    -->
+    <div class="card-text text-muter" *ngIf="movie.Title">
+      <strong>Title:</strong>
+      <p>{{ movie.Title }}</p>
+    </div>
+    <div class="card-text text-muter" *ngIf="movie.Year">
+      <strong>Year:</strong>
+      <p>{{ movie.Year }}</p>
+    </div>
+    <div class="card-text text-muter" *ngIf="movie.Runtime">
+      <strong>Runtime:</strong>
+      <p>{{ movie.Runtime }}</p>
+    </div>
+    <div class="card-text text-muter" *ngIf="movie.Genre">
+      <strong>Genre:</strong>
+      <p>{{ movie.Genre }}</p>
+    </div>
+    <div class="card-text text-muter" *ngIf="movie.Director">
+      <strong>Director:</strong>
+      <p>{{ movie.Director }}</p>
+    </div>
+  </div>
+</div>
