@@ -9,8 +9,6 @@ export class MoviesListComponent implements OnInit {
   movies: Array<Object>;
   constructor(private moviesService: MoviesService) {
     moviesService.movieArrayChange.subscribe(value => {
-      console.log(value);
-
       this.movies = value;
     });
   }

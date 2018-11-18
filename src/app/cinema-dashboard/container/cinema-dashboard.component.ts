@@ -13,5 +13,4 @@ export class CinemaDashboardComponent implements OnInit {
   ngOnInit() {
     this.moviesService.getData();
   }
-  }
 }

@@ -52,7 +52,7 @@ export class MovieDetailModalContentComponent implements OnInit {
       }
     });
   }
-  save() {
+  save(): void {
     console.log(this.detailForm.value);
     if (this.detailForm.status === "VALID" && !this.isExist) {
       const id = this.detailForm.get("id")
@@ -68,11 +68,11 @@ export class MovieDetailModalContentComponent implements OnInit {
       this.modalService.dismissAll();
     }
   }
-  delete() {
+  delete(): void {
     const modalRef = this.modalService.open(MovieDeleteModalContentComponent);
     modalRef.componentInstance.id = this.detailForm.get("id").value;
   }
-  closePanel(event) {
+  closePanel(event): void {
     event.stopPropagation();
     event.preventDefault();
     this.modalService.dismissAll();
