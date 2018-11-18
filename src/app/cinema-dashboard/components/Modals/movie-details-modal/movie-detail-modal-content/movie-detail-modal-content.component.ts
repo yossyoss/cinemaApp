@@ -9,6 +9,7 @@ import { MovieDeleteModalContentComponent } from "../movie-delete-modal-content/
 })
 export class MovieDetailModalContentComponent implements OnInit {
   @Input() details;
+  @Input() isNew;
 
   detailForm: FormGroup;
   constructor(
@@ -17,6 +18,8 @@ export class MovieDetailModalContentComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    console.log("popup");
+
     if (this.details) {
       this.detailForm = new FormGroup({
         id: new FormControl(
@@ -48,5 +51,13 @@ export class MovieDetailModalContentComponent implements OnInit {
     this.modalService.open(MovieDeleteModalContentComponent, {
       size: "lg"
     });
+  }
+  closePanel(event) {
+    event.stopPropagation();
+    event.preventDefault();
+    this.modalService.dismissAll();
+    // $event.stopPropagation();
+    // $event.stopPropagation();
+    // activeModal.close('Close click')
   }
 }

@@ -1,5 +1,5 @@
 import { Component, Input } from "@angular/core";
-import {  NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { MovieDetailModalContentComponent } from "./movie-detail-modal-content/movie-detail-modal-content.component";
 
 @Component({
@@ -8,11 +8,15 @@ import { MovieDetailModalContentComponent } from "./movie-detail-modal-content/m
 })
 export class MovieDetailModalComponent {
   @Input() details: Object;
+  @Input() new: Boolean;
   constructor(private modalService: NgbModal) {}
 
   open() {
     const modalRef = this.modalService.open(MovieDetailModalContentComponent);
     modalRef.componentInstance.details = this.details;
   }
-
+  add() {
+    const modalRef = this.modalService.open(MovieDetailModalContentComponent);
+    modalRef.componentInstance.isNew = true;
+  }
 }

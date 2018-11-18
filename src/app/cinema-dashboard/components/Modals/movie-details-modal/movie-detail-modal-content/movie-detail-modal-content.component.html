@@ -95,11 +95,16 @@
   <button
     type="button"
     class="btn btn-outline-dark"
-    (click)="activeModal.close('Close click')"
+    (click)="closePanel($event)"
   >
     Close
   </button>
-  <button type="button" class="btn btn-danger" (click)="delete()">
+  <button
+    type="button"
+    class="btn btn-danger"
+    (click)="delete()"
+    *ngIf="!isNew"
+  >
     Delete
   </button>
 </div>
