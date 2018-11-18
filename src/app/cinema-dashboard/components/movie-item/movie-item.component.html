@@ -15,11 +15,12 @@
       alt="{{ movie.Title }}"
       height="350px"
     />
-    <ul class="list-inline member-icons animate text-center">
-      <li class="list-inline-item">
-        <ngbd-modal-component [details]="movie"></ngbd-modal-component>
-      </li>
-    </ul>
+    <!-- <ul class="list-inline member-icons animate text-center">
+     
+    </ul> -->
+    <div class="list-inline-item animate member-icons text-center">
+      <ngbd-modal-component [details]="movie"></ngbd-modal-component>
+    </div>
   </div>
 
   <div class="card-body p-1">
