@@ -12,7 +12,7 @@
 -->
 <div class="modal-body">
   <form [formGroup]="detailForm" (ngSubmit)="save()">
-    <div class="form-group">
+    <div class="form-group" *ngIf="!isNew">
       <strong>Id:</strong>
       <input type="text" class="form-control" formControlName="id" />
     </div>
@@ -22,12 +22,18 @@
         type="text"
         [ngClass]="{
           'is-invalid':
-            detailForm.get('title').errors && detailForm.get('title').touched
+            (detailForm.get('Title').errors &&
+              detailForm.get('Title').touched) ||
+            isExist
         }"
         class="form-control"
-        formControlName="title"
+        formControlName="Title"
       />
-      <div class="invalid-feedback">Please enter a title</div>
+      <div class="invalid-feedback" *ngIf="!isExist">Please enter a title</div>
+
+      <div class="invalid-feedback" *ngIf="isExist">
+        The title is already exist
+      </div>
     </div>
 
     <div class="form-group">
@@ -35,11 +41,11 @@
       <input
         [ngClass]="{
           'is-invalid':
-            detailForm.get('year').errors && detailForm.get('year').touched
+            detailForm.get('Year').errors && detailForm.get('Year').touched
         }"
         type="text"
         class="form-control"
-        formControlName="year"
+        formControlName="Year"
       />
       <div class="invalid-feedback">Please enter a year</div>
     </div>
@@ -48,11 +54,12 @@
       <input
         [ngClass]="{
           'is-invalid':
-            detailForm.get('year').errors && detailForm.get('runtime').touched
+            detailForm.get('Runtime').errors &&
+            detailForm.get('Runtime').touched
         }"
         type="text"
         class="form-control"
-        formControlName="runtime"
+        formControlName="Runtime"
       />
       <div class="invalid-feedback">Please enter a runtime</div>
     </div>
@@ -61,11 +68,11 @@
       <input
         [ngClass]="{
           'is-invalid':
-            detailForm.get('genre').errors && detailForm.get('genre').touched
+            detailForm.get('Genre').errors && detailForm.get('Genre').touched
         }"
         type="text"
         class="form-control"
-        formControlName="genre"
+        formControlName="Genre"
       />
       <div class="invalid-feedback">Please enter a genre</div>
     </div>
@@ -74,12 +81,12 @@
       <input
         [ngClass]="{
           'is-invalid':
-            detailForm.get('director').errors &&
-            detailForm.get('director').touched
+            detailForm.get('Director').errors &&
+            detailForm.get('Director').touched
         }"
         type="text"
         class="form-control"
-        formControlName="director"
+        formControlName="Director"
       />
       <div class="invalid-feedback">Please enter a director</div>
     </div>
@@ -91,7 +98,16 @@
 </div>
 
 <div class="modal-footer">
-  <button type="button" class="btn btn-success" (click)="save()">Save</button>
+  <button
+    type="button"
+    class="btn btn-success"
+    (click)="save()"
+    [ngClass]="{
+      disabled: detailForm.status === 'INVALID' || isExist
+    }"
+  >
+    Save
+  </button>
   <button
     type="button"
     class="btn btn-outline-dark"

@@ -1,15 +1,21 @@
-import { Component, OnInit, Input } from '@angular/core';
-
+import { Component, OnInit, Input } from "@angular/core";
+import { MoviesService } from "../../services/movies.service";
 @Component({
-  selector: 'movies-list',
-  templateUrl: './movies-list.component.html',
-  styleUrls: ['./movies-list.component.scss']
+  selector: "movies-list",
+  templateUrl: "./movies-list.component.html",
+  styleUrls: ["./movies-list.component.scss"]
 })
 export class MoviesListComponent implements OnInit {
-@Input() movies: Array<Object>
-  constructor() { }
+  movies: Array<Object>;
+  constructor(private moviesService: MoviesService) {
+    moviesService.movieArrayChange.subscribe(value => {
+      console.log(value);
 
-  ngOnInit() {
+      this.movies = value;
+    });
   }
 
+  ngOnInit() {
+    this.movies = this.moviesService.movies;
+  }
 }

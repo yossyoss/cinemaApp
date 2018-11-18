@@ -3,7 +3,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-
+import {MoviesService} from './services/movies.service'
 import { CinemaDashboardComponent } from "./container/cinema-dashboard.component";
 import { MovieItemComponent } from "./components/movie-item/movie-item.component";
 import { MoviesListComponent } from "./components/movies-list/movies-list.component";
@@ -26,6 +26,7 @@ import {NavBarComponent} from './components/nav-bar/nav-bar.component'
     MovieDetailModalContentComponent,
     MovieDeleteModalContentComponent
   ],
+  providers:[MoviesService],
   exports: [CinemaDashboardComponent]
 })
 export class CinemaDashboardModule {}
