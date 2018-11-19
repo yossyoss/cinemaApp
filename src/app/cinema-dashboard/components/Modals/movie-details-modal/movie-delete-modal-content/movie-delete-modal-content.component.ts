@@ -7,7 +7,7 @@ import { MoviesService } from "../../../../services/movies.service";
   styleUrls: ["./movie-delete-modal-content.component.scss"]
 })
 export class MovieDeleteModalContentComponent implements OnInit {
-  @Input() id;
+  @Input() id: Number;
   constructor(
     private moviesService: MoviesService,
     private modalService: NgbModal,
@@ -16,8 +16,6 @@ export class MovieDeleteModalContentComponent implements OnInit {
 
   ngOnInit() {}
   delete(): void {
-    console.log(this.id);
-
     this.moviesService.removeMovie(this.id);
     this.modalService.dismissAll();
   }

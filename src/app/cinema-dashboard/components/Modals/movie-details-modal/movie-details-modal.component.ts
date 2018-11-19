@@ -8,7 +8,7 @@ import { MovieDeleteModalContentComponent } from "./movie-delete-modal-content/m
   templateUrl: "./movie-details-modal.component.html"
 })
 export class MovieDetailModalComponent {
-  @Input() details;
+  @Input() details: any;
   @Input() new: Boolean;
   constructor(private modalService: NgbModal) {}
 
@@ -21,8 +21,6 @@ export class MovieDetailModalComponent {
     modalRef.componentInstance.isNew = true;
   }
   delete(): void {
-    console.log(this.details.id);
-
     const modalRef = this.modalService.open(MovieDeleteModalContentComponent);
     if (this.details && (this.details.id || this.details.id === 0)) {
       modalRef.componentInstance.id = this.details.id;

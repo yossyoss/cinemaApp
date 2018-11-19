@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { map, mergeMap } from "rxjs/operators";
-// import { Subject } from 'rxjs/Subject';
+
 import { Observable, Subject } from "rxjs";
 @Injectable({
   providedIn: "root"
@@ -28,7 +27,6 @@ export class MoviesService {
     this.movieArrayChange.next(this.movies);
   }
   editMovie(movie) {
-    console.log(movie);
     let movieToEditIndex = this.movies.findIndex(m => m.id === movie.id);
     this.movies[movieToEditIndex] = {
       ...this.movies[movieToEditIndex],

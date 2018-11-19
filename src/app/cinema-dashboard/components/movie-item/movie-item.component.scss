@@ -66,3 +66,13 @@
   bottom: 0;
   opacity: 1;
 }
+@media all and (max-width: 600px) {
+  .member-icons {
+    left: 35%;
+  }
+}
+@media all and (max-width: 450px) {
+  .member-icons {
+    left: 30%;
+  }
+}
