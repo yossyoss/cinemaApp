@@ -54,19 +54,13 @@
   line-height: 20px;
 }
 .member-icons {
-  //   position: absolute;
-  //   //bottom: -2em;
-  //   left: 0;
-  //   right: 0;
-  //   margin-right: auto;
-  //   margin-left: auto;
-  //   opacity: 0;
   position: absolute;
-  left: 36%;
+  left: 18%;
   bottom: 5px;
   margin-right: auto;
   margin-left: auto;
   opacity: 0;
+  padding: 4px;
 }
 .card-img-wrapper:hover .member-icons {
   bottom: 0;

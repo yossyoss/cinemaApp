@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, onChanges } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { NgbActiveModal, NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { MovieDeleteModalContentComponent } from "../movie-delete-modal-content/movie-delete-modal-content.component";
@@ -9,7 +9,7 @@ import { MoviesService } from "../../../../services/movies.service";
   styleUrls: ["./movie-detail-modal-content.component.scss"]
 })
 export class MovieDetailModalContentComponent implements OnInit {
-  @Input() details: Object;
+  @Input() details;
   @Input() isNew: Boolean;
   isExist: Boolean = false;
   detailForm: FormGroup;
@@ -59,7 +59,7 @@ export class MovieDetailModalContentComponent implements OnInit {
         ? this.detailForm.get("id").value
         : null;
       const movie = this.detailForm.value;
-      if (id) {
+      if (id || id === 0) {
         movie.id = id;
         this.moviesService.editMovie(movie);
       } else {
@@ -68,10 +68,7 @@ export class MovieDetailModalContentComponent implements OnInit {
       this.modalService.dismissAll();
     }
   }
-  delete(): void {
-    const modalRef = this.modalService.open(MovieDeleteModalContentComponent);
-    modalRef.componentInstance.id = this.detailForm.get("id").value;
-  }
+
   closePanel(event): void {
     event.stopPropagation();
     event.preventDefault();

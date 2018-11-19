@@ -7,7 +7,7 @@ import { Observable, Subject } from "rxjs";
   providedIn: "root"
 })
 export class MoviesService {
-  movies: Array<Object> = [];
+  movies = [];
   movieArrayChange: Subject<Object[]> = new Subject<Object[]>();
   baseUrl =
     "https://api.themoviedb.org/3/discover/movie?api_key=3fdd5a3ac67cba27e25887ce1e75aea8&sort_by=popularity.desc&include_adult=true&include_video=false&page=1";
@@ -29,7 +29,11 @@ export class MoviesService {
   }
   editMovie(movie) {
     console.log(movie);
-    this.movies[movie.id] = { ...this.movies[movie.id], ...movie };
+    let movieToEditIndex = this.movies.findIndex(m => m.id === movie.id);
+    this.movies[movieToEditIndex] = {
+      ...this.movies[movieToEditIndex],
+      ...movie
+    };
   }
   addMovie(movie) {
     movie.id = this.movies.length;

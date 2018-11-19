@@ -1,4 +1,11 @@
-<button class="btn btn-info edit-btn animate" (click)="open()" *ngIf="!new">
-  <i class="fa fa-edit"></i>Edit
-</button>
-<button class="btn btn-warning" (click)="add()" *ngIf="new">Add movie</button>
+<div class="btn-container">
+  <button id="edit-btn" class="btn btn-info animate" (click)="open()" *ngIf="!new">
+    <i class="fa fa-edit"></i>Edit
+  </button>
+  <button class="btn btn-warning animate" (click)="add()" *ngIf="new">
+    Add movie
+  </button>
+  <button type="button" class="btn btn-danger" (click)="delete()" *ngIf="!new">
+    Delete
+  </button>
+</div>
