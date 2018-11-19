@@ -12,7 +12,7 @@
     <div class="card-body-conainer">
       <div class="card-text text-muter">
         <strong>Title:</strong>
-        <p>{{ movie?.Title }}</p>
+        <p>{{ movie?.Title | specialCharPipe | titlecase }}</p>
       </div>
       <div class="card-text text-muter">
         <strong>Year:</strong>

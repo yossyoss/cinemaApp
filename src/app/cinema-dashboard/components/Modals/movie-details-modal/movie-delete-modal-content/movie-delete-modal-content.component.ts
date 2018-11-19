@@ -16,6 +16,8 @@ export class MovieDeleteModalContentComponent implements OnInit {
 
   ngOnInit() {}
   delete(): void {
+    console.log(this.id);
+
     this.moviesService.removeMovie(this.id);
     this.modalService.dismissAll();
   }
